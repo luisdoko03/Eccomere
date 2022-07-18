@@ -1,0 +1,33 @@
+<div class="container justify-content-center">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="nav-link" aria-current="page"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLink="/posts/manage">New Post</a>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Created On</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of posts">
+      <td class="align-middle">{{item.id}}</td>
+      <td><img style="height: 20px;" src="http://localhost:8080/api/files/{{item.photo}}" alt="{{item.photo}}"/></td>
+      <td class="align-middle">{{item.title}}</td>
+      <td class="align-middle">{{item.author}}</td>
+      <td class="align-middle">{{item.createdAt}}</td>
+      <td>
+        <a class="me-3" [routerLink]="['/posts/manage', item.id]">Edit</a>
+        <a (click)="onDeletePost(item.id)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+<div class="container justify-content-center">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="nav-link" aria-current="page"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLink="/banners/manage">New Banner</a>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Created On</th>
+      <th>Last Modified</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let banner of banners">
+      <td><img style="height: 20px;" src="http://localhost:8080/api/files/{{banner.photoUrl}}" alt="{{banner.photoUrl}}"/></td>
+      <td class="align-middle">{{banner.id}}</td>
+      <td class="align-middle">{{banner.name}}</td>
+      <td class="align-middle">{{banner.created}}</td>
+      <td class="align-middle">{{banner.modified}}</td>
+      <td>
+        <a class="me-3" [routerLink]="['/banners/manage', banner.id]">Edit</a>
+        <a (click)="onDeleteBanner(banner.id)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

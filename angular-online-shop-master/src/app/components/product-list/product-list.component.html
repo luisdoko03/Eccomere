@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="nav-link" aria-current="page"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLink="/products/manage">New Product</a>
+  </div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th></th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Created On</th>
+    <th>Modified On</th>
+    <th>Category Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td ><img style="height: 50px;" src="http://localhost:8080/api/files/{{product.photoUrl}}" alt="{{product.photoUrl}}"/></td>
+    <td class="align-middle">{{product.id}}</td>
+    <td class="align-middle">{{product.title}}</td>
+    <td class="align-middle">{{product.created}}</td>
+    <td class="align-middle">{{product.modified}}</td>
+    <td class="align-middle">{{product.category.name}}</td>
+    <td class="align-middle">{{product.price | currency : 'USD'}}</td>
+    <td>
+      <a class="me-3" [routerLink]="['/products/manage', product.id]">Edit</a>
+      <a (click)="onDeleteProduct(product.id)">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>

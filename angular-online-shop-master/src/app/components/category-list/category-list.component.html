@@ -1,0 +1,32 @@
+<div class="container justify-content-center">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="nav-link" aria-current="page"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLink="/categories/manage">New Category</a>
+  </div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Created On</th>
+      <th>Last Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td><img style="height: 20px;" src="http://localhost:8080/api/files/{{category.photoUrl}}" alt="{{category.photoUrl}}"/></td>
+      <td class="align-middle">{{category.id}}</td>
+      <td class="align-middle">{{category.name}}</td>
+      <td class="align-middle">{{category.created}}</td>
+      <td class="align-middle">{{category.modified}}</td>
+      <td>
+        <a class="me-3" [routerLink]="['/categories/manage', category.id]">Edit</a>
+        <a (click)="onDeleteCategory(category.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

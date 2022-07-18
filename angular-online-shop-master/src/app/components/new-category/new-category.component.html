@@ -1,0 +1,19 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <input type="hidden" formControlName="id">
+  <div class="mb-3">
+    <label class="form-label">Category Name</label>
+    <input type="text" class="form-control" formControlName="name">
+    <span *ngIf="!categoryForm.get('name')?.valid && categoryForm.get('name')?.touched"
+          class="text-danger">Please enter a valid name</span>
+  </div>
+    <div class="mb-3">
+      <label for="photo" class="form-label">Photo</label>
+      <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" />
+    </div>
+      <span>
+       <button type="submit" class="btn btn-success">Save Category</button>
+       <button type="submit" class="btn btn-primary"  routerLink="/categories">Back</button>
+      </span>
+  </div>
+</form>

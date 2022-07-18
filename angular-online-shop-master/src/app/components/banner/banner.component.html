@@ -1,0 +1,19 @@
+<form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <input type="hidden" formControlName="id">
+    <div class="mb-3">
+      <label class="form-label">Banner Name</label>
+      <input type="text" class="form-control" formControlName="name">
+      <span *ngIf="!bannerForm.get('name')?.valid && bannerForm.get('name')?.touched"
+            class="text-danger">Please enter a valid name</span>
+    </div>
+    <div class="mb-3">
+      <label for="photo" class="form-label">Photo</label>
+      <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" />
+    </div>
+    <span>
+       <button type="submit" class="btn btn-success">Save Banner</button>
+       <button type="submit" class="btn btn-primary"  routerLink="/categories">Back</button>
+      </span>
+  </div>
+</form>

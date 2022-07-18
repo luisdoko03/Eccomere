@@ -1,0 +1,35 @@
+<form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <input type="hidden" formControlName="id">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-control" formControlName="title">
+      <span *ngIf="!blogForm.get('title')?.valid && blogForm.get('title')?.touched"
+            class="text-danger">Please enter a valid title</span>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input type="text" class="form-control" formControlName="author">
+      <span *ngIf="!blogForm.get('author')?.valid && blogForm.get('author')?.touched"
+            class="text-danger">Please enter a valid author</span>
+    </div>
+
+    <div class="mb-3">
+      <label for="photo" class="form-label">Photo</label>
+      <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+      <textarea  class="form-control" formControlName="content"></textarea>
+      <span *ngIf="!blogForm.get('content')?.valid && blogForm.get('content')?.touched"
+            class="text-danger">Please enter a valid content</span>
+    </div>
+
+    <span>
+       <button type="submit" class="btn btn-success">Save Blog</button>
+       <button type="submit" class="btn btn-primary"  routerLink="/posts">Back</button>
+      </span>
+  </div>
+</form>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="nav-link" aria-current="page"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLink="/orders/new">New Order</a>
+  </div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>Id</th>
+    <th>Final Price</th>
+    <th>Created On</th>
+    <th>Last Modified</th>
+    <th>Comment</th>
+    <th>first Name</th>
+    <th>last Name</th>
+    <th>Product Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+
+    <td class="align-middle">{{order.id}}</td>
+    <td class="align-middle">{{order.finalPrice}}</td>
+    <td class="align-middle">{{order.created}}</td>
+    <td class="align-middle">{{order.modified}}</td>
+    <td class="align-middle">{{order.comment}}</td>
+    <td class="align-middle">{{order.client.firstName}}</td>
+    <td class="align-middle">{{order.client.lastName}}</td>
+    <td class="align-middle">{{order.product.title}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
